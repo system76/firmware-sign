@@ -23,9 +23,8 @@ else:
     sign_key = nacl.signing.SigningKey.generate()
     sign_key_hex = sign_key.encode(encoder=nacl.encoding.HexEncoder)
 
-    sign_key_f = os.open(keys + "/sign", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o500)
+    sign_key_f = os.open(keys + "/sign", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o400)
     os.write(sign_key_f, sign_key_hex)
-    os.fchmod(sign_key_f, 0o400)
     os.close(sign_key_f)
 
 if os.path.isfile(keys + "/verify"):
