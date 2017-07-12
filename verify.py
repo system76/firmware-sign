@@ -14,7 +14,7 @@ args = parser.parse_args()
 if args.key == None:
     args.key = os.path.dirname(os.path.realpath(__file__)) + "/keys/verify"
 
-verify_key_f = os.open("keys/verify", os.O_RDONLY)
+verify_key_f = os.open(args.key, os.O_RDONLY)
 verify_key_hex = os.read(verify_key_f, 64)
 os.close(verify_key_f)
 
